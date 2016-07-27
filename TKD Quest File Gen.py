@@ -2,13 +2,6 @@ import pickle
 import os
 
 fileList = ['wbQuestion.txt','ytQuestion.txt', 'ybQuestion.txt']
-
-def questList(fileName):
-    quiz = []
-    for file in os.listdir ('\\Quiz Questions'):
-        if file.startswith (fileName):
-            quiz.append(file)
-    return quiz
        
 def whiteSpace(listNam, val):
     return [value for value in listNam if value != val]
