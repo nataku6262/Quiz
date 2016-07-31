@@ -1,0 +1,53 @@
+Breakdown - Quiz
+
+Pre-Requisites: 
+
+This is written in Python 3.4
+
+Modules:
+pickle - native to python 3
+os - native to python 3
+
+Txt file containing questions and answers
+File needs to be structured 
+
+Question
+Answer 1
+Answer 2
+Answer 3
+Answer 4
+Correct Answer
+Explanation
+{Space}
+
+Question files are used to set subject and define name file name for pickle. 
+
+------------------------------------------------------------------------------
+
+Code (Question Pickle): 
+
+Establishing current directory and navigating to 'Question Files' folder using os functions
+to be accessed inside 'questGenerator' function. 
+
+
+Function to remove whitespace that leaked in to question list. 
+	def whiteSpace(listNam, val):
+    		return [value for value in listNam if value != val]
+
+questGenerator
+
+Starts by looping through file in 'Question Files' and adding each line to list 
+"question" with cleanup on newline tags and stripping out whitespace. 
+
+Loop through list placing the first block of 7 into a list which is then pickled 
+for later recall by the Quiz script at a a later stage. to enable random question
+selection.
+
+Then deletes the first block of 7 and then repeats..
+
+Code (TKD_Quiz
+
+
+
+
+

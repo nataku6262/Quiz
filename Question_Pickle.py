@@ -1,9 +1,5 @@
 import pickle
 import os
-
-# List of Question files based on TKD rank to generate question binary files to be called in Quiz App
-
-fileList = ['wbQuestion.txt','ytQuestion.txt', 'ybQuestion.txt']
        
 # Strips out white space that leaks in to list when iterating through txt file.   
 def whiteSpace(listNam, val):
@@ -14,9 +10,8 @@ def questGenerator():
     question = []
     
     for file in fileList:
-        n=1
-        os.mkdir ('Question Files')
-        quizFile = open ('Question Files\\' + file, 'r')
+        
+        quizFile = open (directory + quizFolder + file , 'r')
         for line in quizFile.readlines():
             for i in line.split('\n'):
                 i.rstrip('\n')
@@ -28,13 +23,29 @@ def questGenerator():
     # Iterates through the list in blocks of 7 passing them to a temporary list
     # pickles the list and the deletes first 7 items in the list, loops and repeats
     # until list is exhausted.
-	
+
+        n = 1
         while len(question) >0:
             tempList = question[0:7]
-            questFile = open('Quiz Questions\\'+ file +str(n)+'.p', 'wb')
+            questFile = open(directory + '\\Quiz Questions\\'+ file +str(n)+'.p', 'wb')
             pickle.dump(tempList, questFile)
             questFile.close()
             del question[0:7]
             n+=1
 
-questGenerator()
+#Folder directories, 
+
+quizFolder = '\\Question Files\\'
+directory = os.getcwd()
+fileList = os.listdir(directory+quizFolder)
+
+quizDirectory = os.listdir (directory)
+print (quizDirectory)
+
+print (fileList)
+
+if 'Quiz Questions' not in quizDirectory:
+    os.mkdir ('Quiz Questions')
+    questGenerator()
+else:
+    questGenerator()
